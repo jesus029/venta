@@ -1,12 +1,13 @@
-<?php   
+<?php
+$con= mysqli_connect("localhost", "root", "jesusfernando", "compra");
 
-$mysqli=new mysqli("localhost","root","jesusfernando","compra");
-
-if($mysqli->connect_errno){
-    echo"no se puede conectar a la base de datos" .$mysql->connect_error;
+if($con){
+    
+    echo"no se pudo establecer la conexion a Mysql";
+        
 }
 else{
-    echo "Estas conectado a MYSQL!";
+    echo'conectado';
 }
 
 ?>

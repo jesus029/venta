@@ -1,26 +1,20 @@
 <?php
 session_start();
-include("comrafelizconexion.php");
+include("conexionoo.php");
 
-$user=$_POST["usuario"];
-$pass=$_POST["password"];
+$Usuario=$_POST["Usuario"];
+$password=$_POST["password"];
 
-$resultados = $mysqli->query("SELECT*FROM usuarios WHERE password = '$pass' AND nombre='$user'");
+$conex=$enlace->query("SELECT*FROM usuarios WHERE  Usuario='$Usuario' and password = '$password'");
 
-$filas=$resultados->fetch_all();
+$filas=$conex->fetch_all();
 
-
-if(count($filas)==0){
+if(count($filas)!=0){
     
-    echo"EL usuario o la contraseña son incorrectos";
-      $_SESSION["VIP"]=$NULL;
+    header("location:compra_feliz.php");
 }
 else{
-    echo"Bienvenido a compra Feliz";
-        $_SESSION["VIP"]=$user;
-    $url="comprafeliz1.php";
-    header("Location".$url);
-    die();
+    echo"Error en password o usuario";
+    header("location:comprafelizlogin.php");
 }
-
 ?>
